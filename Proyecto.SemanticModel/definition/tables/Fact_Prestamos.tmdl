@@ -1,0 +1,95 @@
+table Fact_Prestamos
+	lineageTag: 5d882e6c-5d6b-480b-ab69-19c4062bbfa8
+
+	column ID_Prestamo
+		dataType: int64
+		formatString: 0
+		lineageTag: 45adafac-d456-49eb-bdf9-9a7c1c8c110f
+		summarizeBy: sum
+		sourceColumn: ID_Prestamo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fecha_Desembolso
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 754dd387-755e-4069-be28-4bd37b41effb
+		summarizeBy: none
+		sourceColumn: Fecha_Desembolso
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ID_Producto
+		dataType: string
+		lineageTag: 4e854460-405b-469a-abaf-f94656336cbe
+		summarizeBy: none
+		sourceColumn: ID_Producto
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_Asesor
+		dataType: string
+		lineageTag: ed30ff21-f948-4fd8-98da-70f8919f9af9
+		summarizeBy: none
+		sourceColumn: ID_Asesor
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_Sucursal
+		dataType: string
+		lineageTag: 406a8851-e4ee-4970-ba32-ace2f4523b06
+		summarizeBy: none
+		sourceColumn: ID_Sucursal
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID_Cliente
+		dataType: string
+		lineageTag: 0cb4c4f4-fc9a-4a12-9b34-5bc9a67110d2
+		summarizeBy: none
+		sourceColumn: ID_Cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column Monto_Prestamo
+		dataType: int64
+		formatString: 0
+		lineageTag: 07c6debe-9839-4213-9a64-ede79ece6f03
+		summarizeBy: sum
+		sourceColumn: Monto_Prestamo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Interes_Esperado
+		dataType: int64
+		formatString: 0
+		lineageTag: 6505dd7e-6e3a-46c5-84ef-d82fb9b4fa91
+		summarizeBy: sum
+		sourceColumn: Interes_Esperado
+
+		annotation SummarizationSetBy = Automatic
+
+	column Estado_Pago
+		dataType: string
+		lineageTag: 8985b353-a630-4632-952d-cecd926fcfc5
+		summarizeBy: none
+		sourceColumn: Estado_Pago
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Fact_Prestamos = m
+		mode: import
+		source =
+				let
+				  Origen = Excel.Workbook(File.Contents(Carpeta_Fuente_Datos & Archivo_Prestamos), null, true),
+				  #"Navegación 1" = Origen{[Item = "Prestamos", Kind = "Table"]}[Data],
+				  #"Tipo de columna cambiado" = Table.TransformColumnTypes(#"Navegación 1", {{"ID_Prestamo", Int64.Type}, {"Fecha_Desembolso", type date}, {"ID_Producto", type text}, {"ID_Asesor", type text}, {"ID_Sucursal", type text}, {"ID_Cliente", type text}, {"Monto_Prestamo", Int64.Type}, {"Interes_Esperado", Int64.Type}, {"Estado_Pago", type text}}, "es")
+				in
+				  #"Tipo de columna cambiado"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

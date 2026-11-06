@@ -1,0 +1,41 @@
+table Dim_Clientes
+	lineageTag: cfbd3066-5235-482b-94a4-d1d5b8f8bc8c
+
+	column ID_Cliente
+		dataType: string
+		lineageTag: 43dca6ba-6539-499d-ae36-b0c8b668ad5c
+		summarizeBy: none
+		sourceColumn: ID_Cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nombre_Completo
+		dataType: string
+		lineageTag: 6740f40c-550b-43d1-8f56-93a2f64529d1
+		summarizeBy: none
+		sourceColumn: Nombre_Completo
+
+		annotation SummarizationSetBy = Automatic
+
+	column Segmento_Riesgo
+		dataType: string
+		lineageTag: e1a91c8f-9ca9-4a24-9122-6cd1f53281bf
+		summarizeBy: none
+		sourceColumn: Segmento_Riesgo
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Clientes = m
+		mode: import
+		source =
+				let
+				  Origen = Excel.Workbook(File.Contents(Carpeta_Fuente_Datos & Archivo_Clientes), null, true),
+				  #"Navegación 1" = Origen{[Item = "Clientes", Kind = "Table"]}[Data],
+				  #"Tipo de columna cambiado" = Table.TransformColumnTypes(#"Navegación 1", {{"ID_Cliente", type text}, {"Nombre_Completo", type text}, {"Segmento_Riesgo", type text}}, "es")
+				in
+				  #"Tipo de columna cambiado"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

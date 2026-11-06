@@ -1,0 +1,64 @@
+table Dim_Asesores
+	lineageTag: a35f876e-a9e9-4316-a3f1-e800e289ed36
+
+	column ID_Asesor
+		dataType: string
+		lineageTag: f3099762-f00c-49d5-8b2f-ed6bbd028bc1
+		summarizeBy: none
+		sourceColumn: ID_Asesor
+
+		annotation SummarizationSetBy = Automatic
+
+	column Apellido
+		dataType: string
+		lineageTag: cf70ef36-7d34-4fa0-9327-988b90f555d1
+		summarizeBy: none
+		sourceColumn: Apellido
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nombre
+		dataType: string
+		lineageTag: 70a6d23b-7ce9-4f1f-8a36-0121c8ef8081
+		summarizeBy: none
+		sourceColumn: Nombre
+
+		annotation SummarizationSetBy = Automatic
+
+	column Codigo_Empleado
+		dataType: string
+		lineageTag: 0130b265-c115-4048-9b87-414f8cbd32bd
+		summarizeBy: none
+		sourceColumn: Codigo_Empleado
+
+		annotation SummarizationSetBy = Automatic
+
+	column Email_Corp
+		dataType: string
+		lineageTag: 95a3b448-a804-47c7-986e-5a5527330804
+		summarizeBy: none
+		sourceColumn: Email_Corp
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Asesores = m
+		mode: import
+		source =
+				let
+				  Origen = Excel.Workbook(File.Contents(Carpeta_Fuente_Datos & Archivo_Asesores), null, true),
+				  #"Navegación 1" = Origen{[Item = "Asesores", Kind = "Table"]}[Data],
+				  #"Tipo de columna cambiado" = Table.TransformColumnTypes(#"Navegación 1", {{"ID_Asesor", type text}, {"Datos_Asesor", type text}, {"Email_Corp", type text}}, "es"),
+				    Dividir_Columna_Datos_Asesor = Table.SplitColumn(#"Tipo de columna cambiado", "Datos_Asesor", Splitter.SplitTextByDelimiter("|", QuoteStyle.Csv), {"Datos_Asesor.1", "Datos_Asesor.2"}),
+				    Tipo_Dato_Cambiado_Nueva_Columna = Table.TransformColumnTypes(Dividir_Columna_Datos_Asesor,{{"Datos_Asesor.1", type text}, {"Datos_Asesor.2", type text}}),
+				    Renombrar_Columna_Cod_Asesor = Table.RenameColumns(Tipo_Dato_Cambiado_Nueva_Columna,{{"Datos_Asesor.2", "Codigo_Empleado"}}),
+				    Dividir_Columna_Asesor_por_coma = Table.SplitColumn(Renombrar_Columna_Cod_Asesor, "Datos_Asesor.1", Splitter.SplitTextByDelimiter(",", QuoteStyle.Csv), {"Datos_Asesor.1.1", "Datos_Asesor.1.2"}),
+				    Tipo_Dato_Cambiado = Table.TransformColumnTypes(Dividir_Columna_Asesor_por_coma,{{"Datos_Asesor.1.1", type text}, {"Datos_Asesor.1.2", type text}}),
+				    Quitar_Espacio = Table.ReplaceValue(Tipo_Dato_Cambiado," ","",Replacer.ReplaceText,{"Datos_Asesor.1.2"}),
+				    Renombrar_Columnas_Apellidos_Nombres = Table.RenameColumns(Quitar_Espacio,{{"Datos_Asesor.1.1", "Apellido"}, {"Datos_Asesor.1.2", "Nombre"}})
+				in
+				    Renombrar_Columnas_Apellidos_Nombres
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

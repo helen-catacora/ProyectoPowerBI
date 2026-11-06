@@ -1,0 +1,41 @@
+/// Carpeta donde se encuentran las fuentes de datos
+expression Carpeta_Fuente_Datos = "C:\Users\USER\Desktop\POWER BI\Proyecto\Opcion 3 Finanzas\01_Fuentes\" meta [IsParameterQuery=true, Type="Any", IsParameterQueryRequired=true]
+	lineageTag: 192fda65-4a6f-4ccf-ba4b-863ca52acf4b
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Text
+
+expression Archivo_Asesores = "Asesores.xlsx" meta [IsParameterQuery=true, Type="Any", IsParameterQueryRequired=true]
+	lineageTag: d82707ab-3fb3-4b5c-b4c4-ee3f37e20e69
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Text
+
+expression Archivo_Clientes = "Clientes.xlsx" meta [IsParameterQuery=true, Type="Any", IsParameterQueryRequired=true]
+	lineageTag: 3543611c-e959-4270-9a2b-a0deab3469c5
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Text
+
+expression Archivo_Prestamos = "Prestamos.xlsx" meta [IsParameterQuery=true, Type="Any", IsParameterQueryRequired=true]
+	lineageTag: b604e2ec-f75e-4189-bdfa-4478a3d30021
+
+	annotation PBI_ResultType = Text
+
+expression Archivo_Productos = "Productos.xlsx" meta [IsParameterQuery=true, Type="Any", IsParameterQueryRequired=true]
+	lineageTag: c8b6c83e-a295-420a-8192-f9df0b8dfa8e
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Text
+
+expression Archivo_Sucursales = "Sucursales.xlsx" meta [IsParameterQuery=true, Type="Any", IsParameterQueryRequired=true]
+	lineageTag: 2ab446f7-8a2b-49ad-b174-653e29743567
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Text
+

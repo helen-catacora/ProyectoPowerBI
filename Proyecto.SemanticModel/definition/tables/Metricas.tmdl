@@ -1,0 +1,32 @@
+table Metricas
+	lineageTag: f480ec75-fd16-42b8-a36e-29c5d9c356a1
+
+	measure 'Monto Total Desembolsado' = SUM(Fact_Prestamos[Monto_Prestamo])
+		formatString: 0
+		lineageTag: 33de3690-094a-4258-85c6-efdb98cd1700
+
+	measure 'Cantidad de Préstamos' = COUNTROWS(Fact_Prestamos)
+		formatString: 0
+		lineageTag: 5b5e09a8-bb97-4b3a-870b-9cb093d38220
+
+	measure 'Préstamos al Día' = CALCULATE(COUNTROWS(Fact_Prestamos), Fact_Prestamos[Estado_Pago] = "Al Día")
+		formatString: 0
+		lineageTag: e0ae8f70-8c91-42ad-8852-ec63b80d2d7e
+
+	measure '% Cartera Sana' = DIVIDE([Préstamos al Día], [Cantidad de Préstamos], 0)
+		formatString: 0.00\ %;-0.00\ %;0.00\ %
+		lineageTag: 680d6506-0809-4c80-a5fe-541345fe1802
+
+	partition Metricas = m
+		mode: import
+		source =
+				let
+				  Origen = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Columna 1" = _t]),
+				    #"Columnas quitadas" = Table.RemoveColumns(Origen,{"Columna 1"})
+				in
+				  #"Columnas quitadas"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

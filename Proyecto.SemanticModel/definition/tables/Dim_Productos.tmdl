@@ -1,0 +1,50 @@
+table Dim_Productos
+	lineageTag: ceb05f75-afb9-450d-aadd-35dc68b8e4d5
+
+	column ID_Producto
+		dataType: string
+		lineageTag: 32dc23d9-976d-4fc1-a53c-c4dc62e9a7c9
+		summarizeBy: none
+		sourceColumn: ID_Producto
+
+		annotation SummarizationSetBy = Automatic
+
+	column Codigo_Comercial
+		dataType: string
+		lineageTag: 4f519488-ac4d-45af-964c-a974ce1988f0
+		summarizeBy: none
+		sourceColumn: Codigo_Comercial
+
+		annotation SummarizationSetBy = Automatic
+
+	column Tipo_Credito
+		dataType: string
+		lineageTag: a44d068f-c3fc-4194-9002-94f6b351c822
+		summarizeBy: none
+		sourceColumn: Tipo_Credito
+
+		annotation SummarizationSetBy = Automatic
+
+	column Plazo_Meses
+		dataType: int64
+		formatString: 0
+		lineageTag: 8c0a9737-f6ae-4b52-8ace-a80cef0ce687
+		summarizeBy: none
+		sourceColumn: Plazo_Meses
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Productos = m
+		mode: import
+		source =
+				let
+				  Origen = Excel.Workbook(File.Contents(Carpeta_Fuente_Datos & Archivo_Productos), null, true),
+				  #"Navegación 1" = Origen{[Item = "Productos", Kind = "Table"]}[Data],
+				  #"Tipo de columna cambiado" = Table.TransformColumnTypes(#"Navegación 1", {{"ID_Producto", type text}, {"Codigo_Comercial", type text}, {"Tipo_Credito", type text}, {"Plazo_Meses", Int64.Type}}, "es")
+				in
+				  #"Tipo de columna cambiado"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

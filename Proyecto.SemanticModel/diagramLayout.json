@@ -1,0 +1,113 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 28.441820673937865
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 639.3289925871785,
+            "y": 47.701776126445338
+          },
+          "nodeIndex": "Dim_Asesores",
+          "nodeLineageTag": "a35f876e-a9e9-4316-a3f1-e800e289ed36",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 416.2596831054729
+          },
+          "nodeIndex": "Dim_Clientes",
+          "nodeLineageTag": "cfbd3066-5235-482b-94a4-d1d5b8f8bc8c",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 633.4418787823372,
+            "y": 443.37305359526891
+          },
+          "nodeIndex": "Dim_Productos",
+          "nodeLineageTag": "ceb05f75-afb9-450d-aadd-35dc68b8e4d5",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 59.731671920264631,
+            "y": 14.220910336968931
+          },
+          "nodeIndex": "Dim_Sucursales",
+          "nodeLineageTag": "650ba6f2-f5fa-4078-a872-f63caecb32c1",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 350.24671451724373,
+            "y": 188.56805245015289
+          },
+          "nodeIndex": "Fact_Prestamos",
+          "nodeLineageTag": "5d882e6c-5d6b-480b-ab69-19c4062bbfa8",
+          "size": {
+            "height": 302.32040459420841,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 961.81465690609627,
+            "y": 229.43779115453574
+          },
+          "nodeIndex": "Dim_Calendario",
+          "nodeLineageTag": "e2aa95c0-77c4-467c-b578-20addb3cdf9b",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 946.15867543486365,
+            "y": 484.43104161486133
+          },
+          "nodeIndex": "Metricas",
+          "nodeLineageTag": "f480ec75-fd16-42b8-a36e-29c5d9c356a1",
+          "size": {
+            "height": 192.48566431891788,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "Todas las tablas",
+      "zoomValue": 63.287087723234137,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas las tablas",
+  "defaultDiagram": "Todas las tablas"
+}

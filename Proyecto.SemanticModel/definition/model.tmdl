@@ -1,0 +1,26 @@
+model Model
+	culture: es-ES
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-BO
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["Dim_Asesores","Dim_Clientes","Fact_Prestamos","Dim_Productos","Dim_Sucursales","Carpeta_Fuente_Datos","Archivo_Asesores","Archivo_Clientes","Archivo_Prestamos","Archivo_Productos","Archivo_Sucursales","Metricas"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Dim_Asesores
+ref table Dim_Clientes
+ref table Fact_Prestamos
+ref table DateTableTemplate_fe104405-5c25-45b9-81ce-9a69f751cc10
+ref table Dim_Productos
+ref table Dim_Sucursales
+ref table Dim_Calendario
+ref table LocalDateTable_c6646141-de36-4f6a-862d-1173296691a4
+ref table Metricas
+
+ref cultureInfo es-ES
+

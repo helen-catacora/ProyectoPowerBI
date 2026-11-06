@@ -1,0 +1,124 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.3.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY26SU05",
+      "reportVersionAtImport": {
+        "visual": "2.9.0",
+        "report": "3.3.0",
+        "page": "2.3.1"
+      },
+      "type": "SharedResources"
+    }
+  },
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "resourcePackages": [
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "CY26SU05",
+          "path": "BaseThemes/CY26SU05.json",
+          "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "Group_206205127285478074.png",
+          "path": "Group_206205127285478074.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_3_(2)16823097710974344.png",
+          "path": "Group_3_(2)16823097710974344.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_4_(2)11187837087900121.png",
+          "path": "Group_4_(2)11187837087900121.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_57406288142533215.png",
+          "path": "Group_57406288142533215.png",
+          "type": "Image"
+        },
+        {
+          "name": "Rectangle_684017936103355504.png",
+          "path": "Rectangle_684017936103355504.png",
+          "type": "Image"
+        },
+        {
+          "name": "Rectangle_7015008989720503818.png",
+          "path": "Rectangle_7015008989720503818.png",
+          "type": "Image"
+        },
+        {
+          "name": "Rectangle_705192906128802506.png",
+          "path": "Rectangle_705192906128802506.png",
+          "type": "Image"
+        },
+        {
+          "name": "Rectangle_706862532483583272.png",
+          "path": "Rectangle_706862532483583272.png",
+          "type": "Image"
+        },
+        {
+          "name": "Rectangle_7622413300455649188.png",
+          "path": "Rectangle_7622413300455649188.png",
+          "type": "Image"
+        },
+        {
+          "name": "Rectangle_799525417512381809.png",
+          "path": "Rectangle_799525417512381809.png",
+          "type": "Image"
+        },
+        {
+          "name": "Rectangle_986753817070814012.png",
+          "path": "Rectangle_986753817070814012.png",
+          "type": "Image"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "exportDataMode": "AllowSummarized",
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true,
+    "useDefaultAggregateDisplayName": true
+  }
+}

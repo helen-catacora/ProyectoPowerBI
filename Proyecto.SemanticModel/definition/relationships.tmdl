@@ -1,0 +1,25 @@
+relationship AutoDetected_9bb3502b-a1aa-4420-9568-019a3511eebe
+	fromColumn: Fact_Prestamos.ID_Asesor
+	toColumn: Dim_Asesores.ID_Asesor
+
+relationship AutoDetected_30540542-a5aa-4089-991b-36cca464495b
+	fromColumn: Fact_Prestamos.ID_Cliente
+	toColumn: Dim_Clientes.ID_Cliente
+
+relationship AutoDetected_d0731364-2d73-4eec-b1b0-3e15c522af1e
+	fromColumn: Fact_Prestamos.ID_Producto
+	toColumn: Dim_Productos.ID_Producto
+
+relationship AutoDetected_d2dcbfdb-d3da-4df1-b017-f6a8bb64bafa
+	fromColumn: Fact_Prestamos.ID_Sucursal
+	toColumn: Dim_Sucursales.ID_Sucursal
+
+relationship 646df791-4234-4053-a40e-2d452e0e7fb2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Dim_Calendario.Date
+	toColumn: LocalDateTable_c6646141-de36-4f6a-862d-1173296691a4.Date
+
+relationship 2329c094-c468-8dfa-b269-a19219a330e2
+	fromColumn: Fact_Prestamos.Fecha_Desembolso
+	toColumn: Dim_Calendario.Date
+

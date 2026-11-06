@@ -1,0 +1,50 @@
+table Dim_Sucursales
+	lineageTag: 650ba6f2-f5fa-4078-a872-f63caecb32c1
+
+	column ID_Sucursal
+		dataType: string
+		lineageTag: 7090c385-f974-4b33-8fed-27cd280bb628
+		summarizeBy: none
+		sourceColumn: ID_Sucursal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ciudad
+		dataType: string
+		lineageTag: 9bd740b1-3af7-418c-8873-f514f9e36c22
+		summarizeBy: none
+		sourceColumn: Ciudad
+
+		annotation SummarizationSetBy = Automatic
+
+	column Zona
+		dataType: string
+		lineageTag: 2cff0370-e7d7-43ef-98df-9a66bfbcdc84
+		summarizeBy: none
+		sourceColumn: Zona
+
+		annotation SummarizationSetBy = Automatic
+
+	column Presupuesto_Mensual
+		dataType: int64
+		formatString: 0
+		lineageTag: fedafcca-cd06-48b1-99cd-16063c0981c6
+		summarizeBy: none
+		sourceColumn: Presupuesto_Mensual
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Sucursales = m
+		mode: import
+		source =
+				let
+				  Origen = Excel.Workbook(File.Contents(Carpeta_Fuente_Datos & Archivo_Sucursales), null, true),
+				  #"Navegación 1" = Origen{[Item = "Sucursales", Kind = "Table"]}[Data],
+				  #"Tipo de columna cambiado" = Table.TransformColumnTypes(#"Navegación 1", {{"ID_Sucursal", type text}, {"Ciudad", type text}, {"Zona", type text}, {"Presupuesto_Mensual", Int64.Type}}, "es")
+				in
+				  #"Tipo de columna cambiado"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,23 @@
+table Dim_Calendario
+	lineageTag: e2aa95c0-77c4-467c-b578-20addb3cdf9b
+
+	column Date
+		formatString: General Date
+		lineageTag: e47c55ba-bf6e-4656-8ad7-b78a8e596446
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		variation Variación
+			isDefault
+			relationship: 646df791-4234-4053-a40e-2d452e0e7fb2
+			defaultHierarchy: LocalDateTable_c6646141-de36-4f6a-862d-1173296691a4.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Calendario = calculated
+		mode: import
+		source = CALENDARAUTO()
+
+	annotation PBI_Id = cac7f001ca094e8ab3b4f516aa6966cb
+
