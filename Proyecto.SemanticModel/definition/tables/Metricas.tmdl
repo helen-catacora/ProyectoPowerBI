@@ -17,6 +17,15 @@ table Metricas
 		formatString: 0.00\ %;-0.00\ %;0.00\ %
 		lineageTag: 680d6506-0809-4c80-a5fe-541345fe1802
 
+	measure Nueva_medida = ```
+			"hola mundo" 
+			```
+		lineageTag: 513a8b1f-5852-48dd-a5c1-1c829c77361c
+
+	measure Total = SUM(Fact_Prestamos[Monto_Prestamo])
+		formatString: 0
+		lineageTag: fef31882-4934-4610-8596-de9ddf48ea0b
+
 	partition Metricas = m
 		mode: import
 		source =
